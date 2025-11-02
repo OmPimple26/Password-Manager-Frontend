@@ -12,7 +12,7 @@ const Manager = () => {
   const [passwordArray, setPasswordArray] = useState([]);
 
   const getPasswords = async () => {
-    let req = await fetch("https://password-manager-backend-c93g.onrender.com/");
+    let req = await fetch("https://password-manager-backend-c93g.onrender.com/api/passwords");
     let passwords = await req.json();
     setPasswordArray(passwords);
     console.log(passwords);
@@ -56,7 +56,7 @@ const Manager = () => {
     ) {
       // If any such id exists in the database, delete it
       if (form.id) {
-        await fetch("https://password-manager-backend-c93g.onrender.com/", {
+        await fetch("https://password-manager-backend-c93g.onrender.com/api/passwords", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const Manager = () => {
       //   JSON.stringify([...passwordArray, { ...form, id: uuidv4() }])
       // );
       // console.log([...passwordArray, form]);
-      await fetch("https://password-manager-backend-c93g.onrender.com/", {
+      await fetch("https://password-manager-backend-c93g.onrender.com/api/passwords", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const Manager = () => {
       //   "passwords",
       //   JSON.stringify(passwordArray.filter((item) => item.id !== id))
       // );
-      let res = await fetch("https://password-manager-backend-c93g.onrender.com/", {
+      let res = await fetch("https://password-manager-backend-c93g.onrender.com/api/passwords/${id}", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
