@@ -106,7 +106,7 @@ const Manager = () => {
       //   "passwords",
       //   JSON.stringify(passwordArray.filter((item) => item.id !== id))
       // );
-      let res = await fetch("https://password-manager-backend-c93g.onrender.com/api/passwords/${id}", {
+      let res = await fetch("https://password-manager-backend-c93g.onrender.com/api/passwords", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
